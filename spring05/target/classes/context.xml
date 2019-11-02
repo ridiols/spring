@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- myBatis의 싱글톤 객체 생성 -->
+<bean id ="my" class ="org.mybatis.spring.SqlSessionTemplate"> 
+<!-- 아래와는 다르게 파라미터값을 입력해주는 생성자 형태이다. 멤버변수에 주소값 내에 있는 파라미터들을 생성하기 때문에 반드시 생성자를 만드는 때에도 null   -->
+<constructor-arg ref ="config"></constructor-arg>
+</bean>
+
+<!-- myBatis의 설정 객체 생성 -->
+<!-- 멤버변수가 setproperty와 똑같다. 셋 메서드를 만든다. 그렇기 때문에 파라미터값이 null 값이어도 되기 때문에 객체가 만들어지긴 한다.  -->
+<bean id ="config" class ="org.mybatis.spring.SqlSessionFactoryBean"> 
+	<property name="dataSource" ref ="dbcp"></property>
+	<property name="configLocation" value="classpath:config.xml"></property>
+</bean>
+
+<!-- dbcp의 싱글톤 객체 생성 -->
+<!-- db 프로그램의 2단계까지 담당 ; driver 설정, db 연결 -->
+<bean id ="dbcp" class ="org.apache.commons.dbcp.BasicDataSource">
+	<property name ="driverClassName" value ="com.mysql.jdbc.Driver"> </property>
+	<property name ="url" value ="jdbc:mysql://localhost:3308/spring"> </property>
+	<property name ="username" value =""> </property>
+	<property name ="password" value =""> </property>
+ </bean>
+
+</beans>
