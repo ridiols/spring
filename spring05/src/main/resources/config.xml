@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.kgitbank.mvc05.BookmarkDTO" alias="bookDTO"></typeAlias>
+		<typeAlias type="com.kgitbank.mvc05.BookmarkDTO" alias="bookMarkDTO"></typeAlias>
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="book.xml" />
+		<mapper resource="book2.xml" />
 	</mappers>
 </configuration>
